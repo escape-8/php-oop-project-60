@@ -1,0 +1,22 @@
+{
+    "name": "hexlet/code",
+    "description": "php oop project",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "squizlabs/php_codesniffer": "^3.8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mikhail Tsepelev",
+            "email": "cplvmhl@gmail.com"
+        }
+    ],
+    "require": {}
+}
