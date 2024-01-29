@@ -1,0 +1,58 @@
+<?php
+
+namespace Hexlet\Code\Schemas;
+
+class StringSchema
+{
+    private array $validators;
+    private array $checks;
+    private array $checksArgs;
+    private bool $requiredValue;
+
+    public function __construct($checks = [], $checksArgs =[], $requiredValue = false)
+    {
+        $this->validators = [
+            'required' => fn(string|null $string) => empty($string),
+            'minLength' => fn(string $string, int $minLength) => strlen($string) >= $minLength,
+            'contains' => fn(string $haystack, string $needle) => str_contains($haystack, $needle),
+            ];
+        $this->checks = $checks;
+        $this->checksArgs = $checksArgs;
+        $this->requiredValue = $requiredValue;
+    }
+
+    public function required(): StringSchema
+    {
+        $this->requiredValue = true;
+        return $this;
+    }
+
+    public function minLength(int $minLength = 0): StringSchema
+    {
+        $this->checks['minLength'] = $this->validators['minLength'];
+        $this->checksArgs['minLength'] = $minLength;
+        return $this;
+    }
+
+    public function contains(string $needle = ''): StringSchema
+    {
+        $this->checks['contains'] = $this->validators['contains'];
+        $this->checksArgs['contains'] = $needle;
+        return $this;
+    }
+
+    public function isValid(string|null $value): bool
+    {
+        if ($this->requiredValue && $this->validators['required']($value)) {
+            return false;
+        }
+
+        foreach ($this->checks as $nameValidator => $validatorFn) {
+            $isValid = $this->requiredValue = $validatorFn($value, $this->checksArgs[$nameValidator]);
+            if (!$isValid) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
