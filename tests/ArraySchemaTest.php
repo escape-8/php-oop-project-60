@@ -58,4 +58,26 @@ class ArraySchemaTest extends TestCase
         $this->assertFalse($result);
     }
 
+    public function testNestedValidationTrue(): void
+    {
+        $validator = new Validator();
+        $result = $this->arraySchema->shape([
+            'name' =>  $validator->string()->required(),
+            'age' =>  $validator->number()->positive(),
+            ])
+            ->isValid(['name' => 'kolya', 'age' => 100]);
+        $this->assertTrue($result);
+    }
+
+    public function testNestedValidationFalse(): void
+    {
+        $validator = new Validator();
+        $result = $this->arraySchema->shape([
+            'name' =>  $validator->string()->required(),
+            'age' =>  $validator->number()->positive(),
+        ])
+            ->isValid(['name' => 'ada', 'age' => -5]);
+        $this->assertFalse($result);
+    }
+
 }
