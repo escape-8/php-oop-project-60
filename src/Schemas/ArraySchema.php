@@ -28,14 +28,26 @@ class ArraySchema extends Schema
         return $this;
     }
 
+    public function shape(array $args): ArraySchema
+    {
+        foreach ($args as $nameValidator => $validatorFn) {
+            $this->checks[$nameValidator] = $validatorFn;
+        }
+        return $this;
+    }
+
     public function isValid(array|null $value): bool
     {
         if ($this->requiredValue && $this->validators['required']($value)) {
             return false;
         }
 
-        foreach ($this->checks as $nameValidator => $validatorFn) {
-            $isValid = $this->requiredValue = $validatorFn($value, ...$this->checksArgs[$nameValidator]);
+        foreach ($this->checks as $nameValidator => $validator) {
+            if (is_callable($validator)) {
+                $isValid = $validator($value, ...$this->checksArgs[$nameValidator]);
+            } else {
+                $isValid = $validator->isValid($value[$nameValidator]);
+            }
             if (!$isValid) {
                 return false;
             }
