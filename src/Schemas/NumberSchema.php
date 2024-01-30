@@ -2,13 +2,8 @@
 
 namespace Hexlet\Code\Schemas;
 
-class NumberSchema
+class NumberSchema extends Schema
 {
-    private array $validators;
-    private array $checks;
-    private array $checksArgs;
-    private bool $requiredValue;
-
     public function __construct($checks = [], $checksArgs = [], $requiredValue = false)
     {
         $this->validators = [

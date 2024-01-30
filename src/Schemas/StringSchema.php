@@ -2,14 +2,9 @@
 
 namespace Hexlet\Code\Schemas;
 
-class StringSchema
+class StringSchema extends Schema
 {
-    private array $validators;
-    private array $checks;
-    private array $checksArgs;
-    private bool $requiredValue;
-
-    public function __construct($checks = [], $checksArgs =[], $requiredValue = false)
+    public function __construct($checks = [], $checksArgs = [], $requiredValue = false)
     {
         $this->validators = [
             'required' => fn(string|null $string) => empty($string),
