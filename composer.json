@@ -12,6 +12,11 @@
             "Hexlet\\Code\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Hexlet\\Code\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Mikhail Tsepelev",
