@@ -11,7 +11,7 @@ class StringSchema extends Schema
         bool $requiredValue = false
     ) {
         $this->validators = array_merge([
-            'required' => fn(string|null $string) => empty($string),
+            'required' => fn(string|null $string) => $string === null || $string === '',
             'minLength' => fn(string $string, int $minLength) => strlen($string) >= $minLength,
             'contains' => fn(string $haystack, string $needle) => str_contains($haystack, $needle),
         ], $validators);
