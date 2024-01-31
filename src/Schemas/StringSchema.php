@@ -25,14 +25,14 @@ class StringSchema extends Schema
     public function minLength(int $minLength = 0): StringSchema
     {
         $this->checks['minLength'] = $this->validators['minLength'];
-        $this->checksArgs['minLength'] = $minLength;
+        $this->checksArgs['minLength'] = [$minLength];
         return $this;
     }
 
     public function contains(string $needle = ''): StringSchema
     {
         $this->checks['contains'] = $this->validators['contains'];
-        $this->checksArgs['contains'] = $needle;
+        $this->checksArgs['contains'] = [$needle];
         return $this;
     }
 
