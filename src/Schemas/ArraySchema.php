@@ -54,4 +54,11 @@ class ArraySchema extends Schema
         }
         return true;
     }
+
+    public function test(string $validatorName, mixed $arg): ArraySchema
+    {
+        $this->checks[$validatorName] = $this->validators[$validatorName];
+        $this->checksArgs[$validatorName] = [$arg];
+        return $this;
+    }
 }

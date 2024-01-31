@@ -50,4 +50,11 @@ class NumberSchema extends Schema
         }
         return true;
     }
+
+    public function test(string $validatorName, string $arg): NumberSchema
+    {
+        $this->checks[$validatorName] = $this->validators[$validatorName];
+        $this->checksArgs[$validatorName] = [$arg];
+        return $this;
+    }
 }

@@ -43,11 +43,18 @@ class StringSchema extends Schema
         }
 
         foreach ($this->checks as $nameValidator => $validatorFn) {
-            $isValid = $this->requiredValue = $validatorFn($value, $this->checksArgs[$nameValidator]);
+            $isValid = $validatorFn($value, ...$this->checksArgs[$nameValidator]);
             if (!$isValid) {
                 return false;
             }
         }
         return true;
+    }
+
+    public function test(string $validatorName, string $arg): StringSchema
+    {
+        $this->checks[$validatorName] = $this->validators[$validatorName];
+        $this->checksArgs[$validatorName] = [$arg];
+        return $this;
     }
 }
