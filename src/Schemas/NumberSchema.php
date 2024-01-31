@@ -4,8 +4,12 @@ namespace Hexlet\Schemas;
 
 class NumberSchema extends Schema
 {
-    public function __construct($validators = [], $checks = [], $checksArgs = [], $requiredValue = false)
-    {
+    public function __construct(
+        array $validators = [],
+        array $checks = [],
+        array $checksArgs = [],
+        bool $requiredValue = false
+    ) {
         $this->validators = array_merge([
             'required' => fn(int|null $integer) => $integer === null,
             'positive' => fn(int|null $integer) => $integer >= 0,
@@ -36,7 +40,7 @@ class NumberSchema extends Schema
         return $this;
     }
 
-    public function isValid($value): bool
+    public function isValid(mixed $value): bool
     {
         if (($value === 0) || ($this->requiredValue && $this->validators['required']($value))) {
             return false;

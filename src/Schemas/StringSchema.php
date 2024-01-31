@@ -4,13 +4,17 @@ namespace Hexlet\Schemas;
 
 class StringSchema extends Schema
 {
-    public function __construct($validators = [], $checks = [], $checksArgs = [], $requiredValue = false)
-    {
+    public function __construct(
+        array $validators = [],
+        array $checks = [],
+        array $checksArgs = [],
+        bool $requiredValue = false
+    ) {
         $this->validators = array_merge([
             'required' => fn(string|null $string) => empty($string),
             'minLength' => fn(string $string, int $minLength) => strlen($string) >= $minLength,
             'contains' => fn(string $haystack, string $needle) => str_contains($haystack, $needle),
-            ], $validators);
+        ], $validators);
         $this->checks = $checks;
         $this->checksArgs = $checksArgs;
         $this->requiredValue = $requiredValue;

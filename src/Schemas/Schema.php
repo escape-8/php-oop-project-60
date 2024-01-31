@@ -9,5 +9,10 @@ abstract class Schema
     protected array $checksArgs;
     protected bool $requiredValue;
 
-    abstract public function __construct($validators = [], $checks = [], $checksArgs = [], $requiredValue = false);
+    abstract public function __construct(
+        array $validators = [],
+        array $checks = [],
+        array $checksArgs = [],
+        bool $requiredValue = false
+    );
 }
