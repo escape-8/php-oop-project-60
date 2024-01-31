@@ -38,7 +38,7 @@ class NumberSchema extends Schema
 
     public function isValid($value): bool
     {
-        if ($this->requiredValue && $this->validators['required']($value)) {
+        if (($value === 0) || ($this->requiredValue && $this->validators['required']($value))) {
             return false;
         }
 
