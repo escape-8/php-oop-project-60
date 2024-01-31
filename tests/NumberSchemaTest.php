@@ -2,8 +2,8 @@
 
 namespace Hexlet\Code\Tests;
 
-use Hexlet\Code\Schemas\NumberSchema;
-use Hexlet\Code\Validator;
+use Hexlet\Schemas\NumberSchema;
+use Hexlet\Validator\Validator;
 use PHPUnit\Framework\TestCase;
 
 class NumberSchemaTest extends TestCase

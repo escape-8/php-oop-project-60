@@ -3,8 +3,8 @@
 namespace Hexlet\Code\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Hexlet\Code\Validator;
-use Hexlet\Code\Schemas\StringSchema;
+use Hexlet\Validator\Validator;
+use Hexlet\Schemas\StringSchema;
 
 class StringSchemaTest extends TestCase
 {

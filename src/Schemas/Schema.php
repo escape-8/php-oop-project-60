@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexlet\Code\Schemas;
+namespace Hexlet\Schemas;
 
 abstract class Schema
 {

@@ -2,8 +2,8 @@
 
 namespace Hexlet\Code\Tests;
 
-use Hexlet\Code\Schemas\ArraySchema;
-use Hexlet\Code\Validator;
+use Hexlet\Schemas\ArraySchema;
+use Hexlet\Validator\Validator;
 use PHPUnit\Framework\TestCase;
 
 class ArraySchemaTest extends TestCase
