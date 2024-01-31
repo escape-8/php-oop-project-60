@@ -42,8 +42,20 @@ class NumberSchemaTest extends TestCase
 
     public function testIsValidTrue(): void
     {
-        $result = $this->numberSchema->isValid(null);
+        $result = $this->numberSchema->isValid(0);
         $this->assertTrue($result);
+    }
+
+    public function testIsValidTrueWithInt(): void
+    {
+        $result = $this->numberSchema->isValid(1);
+        $this->assertTrue($result);
+    }
+
+    public function testIsValidFalseWithZero(): void
+    {
+        $result = $this->numberSchema->required()->isValid(0);
+        $this->assertFalse($result);
     }
 
     public function testIsValidFalse(): void
