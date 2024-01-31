@@ -79,5 +79,4 @@ class ArraySchemaTest extends TestCase
             ->isValid(['name' => 'ada', 'age' => -5]);
         $this->assertFalse($result);
     }
-
 }
