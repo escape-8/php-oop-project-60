@@ -1,10 +1,10 @@
 <?php
 
-namespace Hexlet\Code;
+namespace Hexlet\Validator;
 
-use Hexlet\Code\Schemas\ArraySchema;
-use Hexlet\Code\Schemas\NumberSchema;
-use Hexlet\Code\Schemas\StringSchema;
+use Hexlet\Schemas\ArraySchema;
+use Hexlet\Schemas\NumberSchema;
+use Hexlet\Schemas\StringSchema;
 
 class Validator
 {
