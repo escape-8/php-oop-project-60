@@ -22,6 +22,12 @@ class NumberSchemaTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testPositiveTrueWithNull()
+    {
+        $result = $this->numberSchema->positive()->isValid(null);
+        $this->assertTrue($result);
+    }
+
     public function testPositiveFalse()
     {
         $result = $this->numberSchema->positive()->isValid(-10);
