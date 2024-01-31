@@ -4,12 +4,12 @@ namespace Hexlet\Code\Schemas;
 
 class ArraySchema extends Schema
 {
-    public function __construct($checks = [], $checksArgs = [], $requiredValue = false)
+    public function __construct($validators = [], $checks = [], $checksArgs = [], $requiredValue = false)
     {
-        $this->validators = [
+        $this->validators = array_merge([
             'required' => fn(array|null $array) => !is_array($array),
             'sizeof' => fn(array $array, int $size) => count($array) === $size,
-        ];
+        ], $validators);
         $this->checks = $checks;
         $this->checksArgs = $checksArgs;
         $this->requiredValue = $requiredValue;

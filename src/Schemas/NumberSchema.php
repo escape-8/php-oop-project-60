@@ -4,13 +4,13 @@ namespace Hexlet\Code\Schemas;
 
 class NumberSchema extends Schema
 {
-    public function __construct($checks = [], $checksArgs = [], $requiredValue = false)
+    public function __construct($validators = [], $checks = [], $checksArgs = [], $requiredValue = false)
     {
-        $this->validators = [
+        $this->validators = array_merge([
             'required' => fn(int|null $integer) => $integer === null,
             'positive' => fn(int $integer) => $integer > 0,
             'range' => fn(int $integer, int $from, int $to) => ($integer >= $from) && ($integer <= $to),
-        ];
+        ], $validators);
         $this->checks = $checks;
         $this->checksArgs = $checksArgs;
         $this->requiredValue = $requiredValue;
