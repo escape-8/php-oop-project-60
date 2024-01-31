@@ -8,7 +8,7 @@ class NumberSchema extends Schema
     {
         $this->validators = array_merge([
             'required' => fn(int|null $integer) => $integer === null,
-            'positive' => fn(int|null $integer) => $integer > 0,
+            'positive' => fn(int|null $integer) => $integer >= 0,
             'range' => fn(int|null $integer, int $from, int $to) => ($integer >= $from) && ($integer <= $to),
         ], $validators);
         $this->checks = $checks;
